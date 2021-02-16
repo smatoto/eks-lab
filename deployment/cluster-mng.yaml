@@ -2,27 +2,29 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: scit-dev-cluster
+  name: dev-cluster
   region: us-east-2
 
 vpc:
-  id: 'vpc-073aa5e919fbd8d6e'
+  id: '<vpc-id>'
   subnets:
     private:
       us-east-2a:
-        id: 'subnet-033ceac6639294c32'
+        id: '<subnet-id>'
       us-east-2b:
-        id: 'subnet-0439e5c9fad50ac0a'
+        id: '<subnet-id>'
     public:
       us-east-2a:
-        id: 'subnet-01f499636f3cce196'
+        id: '<subnet-id>'
       us-east-2b:
-        id: 'subnet-0b41a65310033737c'
+        id: '<subnet-id>'
 
 managedNodeGroups:
   - name: mng-1-workers
     labels: { role: workers }
     instanceType: t2.small
     volumeSize: 80
-    desiredCapacity: 3
+    desiredCapacity: 2
     privateNetworking: true
+    ssh:
+      allow: true

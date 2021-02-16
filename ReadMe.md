@@ -1,9 +1,9 @@
 ### EKS Cluster Creation
 
-Set default region
+Set default region, for this sample we will use us-east-2
 
 ```
-export AWS_REGION=<region-name>
+export AWS_REGION=us-east-2
 ```
 
 Create key-pair
@@ -78,7 +78,9 @@ mapUsers: |
 
 Apply the changes
 
+```
 kubectl apply -f aws-auth-configmap.yaml -n kube-system
+```
 
 Verify RBAC changes
 
