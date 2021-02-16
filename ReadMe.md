@@ -12,10 +12,10 @@ Create key-pair
 aws ec2 create-key-pair --key-name <keypair-name>
 ```
 
-Create EKS cluster - Refer to eks.cluster.yaml file
+Create EKS cluster - Refer to cluster-mng.yaml file
 
 ```
-eksctl create cluster -f deployment/cluster-nodegroups.yaml
+eksctl create cluster -f deployment/cluster-mng.yaml
 ```
 
 Get cluster config
@@ -94,7 +94,7 @@ _Reference: https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-c
 View your cluster's OIDC provider URL
 
 ```
-aws eks describe-cluster --name <cluster_name> --query "cluster.identity.oidc.issuer" --output text
+aws eks describe-cluster --name <cluster-name> --query "cluster.identity.oidc.issuer" --output text
 ```
 
 List the IAM OIDC providers in your account
@@ -106,7 +106,7 @@ aws iam list-open-id-connect-providers | grep <oidc-issuer>
 Create an IAM OIDC identity provider for your cluster
 
 ```
-eksctl utils associate-iam-oidc-provider --cluster <cluster_name> --approve
+eksctl utils associate-iam-oidc-provider --cluster <cluster-name> --approve
 ```
 
 ### AWS Load Balancer Controller (take note of ARN)
@@ -121,7 +121,7 @@ Create an IAM role and annotate the Kubernetes service account named aws-load-ba
 
 ```
 eksctl create iamserviceaccount \
---cluster=<cluster-name>? \
+--cluster=<cluster-name> \
 --namespace=kube-system \
 --name=<service-account-name> \
 --attach-policy-arn=arn:aws:iam::<account-id>:policy/<alb-policy-name> \
