@@ -111,6 +111,12 @@ eksctl utils associate-iam-oidc-provider --cluster <cluster-name> --approve
 
 ### AWS Load Balancer Controller (take note of ARN)
 
+Download an IAM policy for the AWS Load Balancer Controller that allows it to make calls to AWS APIs on your behalf
+
+```
+curl -o iam_policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.1.2/docs/install/iam_policy.json
+```
+
 Create an IAM policy using the policy downloaded in the previous step
 
 ```

@@ -2,8 +2,22 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: dev-cluster
+  name: scit-dev-cluster
   region: us-east-2
+
+vpc:
+  id: 'vpc-073aa5e919fbd8d6e'
+  subnets:
+    private:
+      us-east-2a:
+        id: 'subnet-033ceac6639294c32'
+      us-east-2b:
+        id: 'subnet-0439e5c9fad50ac0a'
+    public:
+      us-east-2a:
+        id: 'subnet-01f499636f3cce196'
+      us-east-2b:
+        id: 'subnet-0b41a65310033737c'
 
 managedNodeGroups:
   - name: mng-1-workers

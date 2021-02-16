@@ -1,2 +1,3 @@
 iam_policy.json
+aws-auth.yaml
 configMap
