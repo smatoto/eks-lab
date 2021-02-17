@@ -27,4 +27,5 @@ managedNodeGroups:
     desiredCapacity: 2
     privateNetworking: true
     ssh:
+      publicKeyName: <keypair-name>
       allow: true
