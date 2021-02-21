@@ -2,30 +2,20 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: dev-cluster
+  name: eks-test-cluster
   region: us-east-2
 
-vpc:
-  id: '<vpc-id>'
-  subnets:
-    private:
-      us-east-2a:
-        id: '<subnet-id>'
-      us-east-2b:
-        id: '<subnet-id>'
-    public:
-      us-east-2a:
-        id: '<subnet-id>'
-      us-east-2b:
-        id: '<subnet-id>'
-
 managedNodeGroups:
-  - name: mng-1-workers
+  - name: eks-mng-1-workers
     labels: { role: workers }
     instanceType: t2.small
-    volumeSize: 80
-    desiredCapacity: 2
+    volumeSize: 20
+    minSize: 1
+    maxSize: 3
+    desiredCapacity: 1
     privateNetworking: true
     ssh:
-      publicKeyName: <keypair-name>
+      publicKeyName: eks-test-kp
       allow: true
+    tags:
+      nodegroup-role: worker
